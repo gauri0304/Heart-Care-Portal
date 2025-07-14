@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,4 +148,155 @@ single tree but is less likely to influence the overall result significantly.<br
 </footer>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine learning Technology</title>
+        <style>
+            h3 {
+                color: #0F2EBA;
+                margin-top: 20px;
+            }
+
+            .justify-text {
+                text-align: justify;
+            }
+
+            /* Main container styling */
+            .main-container {
+                display: flex;
+                flex-wrap: wrap; /* Allows containers to wrap to the next row */
+                justify-content: space-around; /* Adds space between containers */
+                padding: 20px;
+                background-color: #f4f4f9;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                max-width: 1200px;
+                margin: 0 auto; /* Centers the container on the page */
+                font-family: Arial, sans-serif;
+                font-size: 20px;
+                color: #1637A6;
+            }
+
+            /* Sub-container styling */
+            .sub-container {
+                flex: 1 1 calc(30% - 20px); /* Adjusts size based on the main container */
+                margin: 10px;
+                padding: 20px;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                font-family: Arial, sans-serif;
+                font-size: 20px;
+                color: #1637A6;
+            }
+
+            .sub-container:hover {
+                background-color: #f9f9f9;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            footer {
+                background-color: #2C3E87;
+                padding: 20px 0;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            footer .footer-content p {
+                color: #fff9f0;
+                margin: 5px 0;
+                font-size: 14px;
+            }
+
+            footer .footer-content strong {
+                color: #112250;
+            }
+        </style>
+</head>
+<body>
+
+<h3>Random Forest Classifier: </h3>
+<p>The machine learning algorithm used in this heart disease prediction model is Random Forest Classifier, which is part of the ensemble learning methods.
+The Random forest or Random Decision Forest is a supervised Machine learning algorithm used for classification, regression, and other tasks using decision trees.
+Random Forests are particularly well-suited for handling large and complex datasets, dealing with high-dimensional feature spaces, and providing insights into feature importance.
+This algorithm’s ability to maintain high predictive accuracy while minimizing overfitting makes it a popular choice across various domains, including finance, healthcare, and image analysis, among others.
+</p>
+
+<h3>How does Random Forest algorithm work? </h3>
+<p>Random Forest works in two-phase first is to create the random forest by combining N decision tree, and second is to make predictions for each tree created in the first phase.<br>
+    <br>
+The Working process can be explained in the below steps and diagram:<br>
+    <br>
+Step-1: Select random K data points from the training set.<br>
+Step-2: Build the decision trees associated with the selected data points (Subsets).<br>
+Step-3: Choose the number N for decision trees that you want to build.<br>
+Step-4: Repeat Step 1 & 2.<br>
+Step-5: For new data points, find the predictions of each decision tree, and assign the new data points to the category that wins the majority votes.
+</p>
+
+<h3>Advantages of Random Forest Classifier Algorithm</h3>
+<p>1. High Accuracy: Random Forest is known for its high accuracy compared to other algorithms. By combining the predictions of multiple decision trees,
+it reduces the variance and bias, leading to more accurate results. It often performs well even with minimal hyperparameter tuning.<br><br>
+2. Handles Overfitting: Decision trees can easily overfit to training data, but Random Forest mitigates this by averaging multiple decision trees, which helps
+reduce overfitting. Even with a large number of trees, Random Forest tends to generalize well to unseen data.<br><br>
+3. Handles Both Categorical and Numerical Data: Random Forest can handle both types of data without needing to pre-process them into a specific format
+(unlike some other algorithms, such as SVM). It works well with datasets that contain mixed data types.<br><br>
+4. Feature Importance: Random Forest can automatically assess and provide information about the importance of each feature in making predictions.<br><br>
+5. Robust to Outliers and Noise: Since it relies on multiple trees, Random Forest is less sensitive to noise and outliers in the data. An outlier may affect a
+single tree but is less likely to influence the overall result significantly.<br><br>
+6. Works Well with Large Datasets: Random Forest is highly scalable and can handle large datasets with high dimensionality (many features).<br><br>
+7. No Need for Feature Scaling: Unlike algorithms such as SVM or KNN, Random Forest does not require feature scaling (e.g., normalization or standardization).
+    This makes it easier to work with raw data without additional preprocessing steps.<br><br>
+</p>
+
+<div class="main-container">
+    <h3>Other Algorithms</h3>
+    <p>Several machine learning algorithms can be used for heart disease prediction, each with its strengths and weaknesses. Here's a list of commonly used algorithms,
+        along with points and a brief description:</p>
+    <div class="sub-container">Logistic Regression
+    <p>Logistic Regression is a statistical method used for binary classification problems. It models the probability of the target variable (e.g., presence or absence
+    of heart disease) based on input features. It's easy to implement and interpretable, making it a good baseline model for this project. However, it may struggle with
+    complex non-linear relationships in the data.</p>
+    </div>
+    <div class="sub-container">K-Nearest Neighbors(KNN)
+    <p>KNN is a non-parametric algorithm that classifies data points based on the majority class of their nearest neighbors. It works well with smaller datasets but can
+    become computationally expensive for large datasets. KNN does not make assumptions about data distribution, which can be an advantage for heart disease datasets with diverse patterns.</p>
+    </div>
+    <div class="sub-container">Support Vector Machine(SVM)
+    <p>SVM constructs a hyperplane in a high-dimensional space to separate different classes. By using kernel functions (e.g., linear, polynomial, RBF), it can
+        handle non-linear relationships effectively. It is robust to outliers but can be computationally intensive for large datasets.</p>
+    </div>
+    <div class="sub-container">Decision Tree
+    <p>Decision Trees split the dataset into subsets based on feature values to make predictions. They are intuitive and provide a clear representation of how
+    predictions are made. However, they can overfit the training data, leading to poor generalization on unseen data. Techniques like pruning and ensembling
+        (e.g., Random Forest) can address this.</p>
+    </div>
+    <div class="sub-container">Gradient Boosting (e.g., XGBoost, LightGBM)
+    <p>Gradient Boosting builds an ensemble of weak learners (e.g., decision trees) sequentially, where each tree corrects the errors of the previous one. Algorithms
+    like XGBoost and LightGBM are optimized implementations of Gradient Boosting and are widely used in machine learning competitions due to their speed and accuracy.
+    These algorithms are suitable for complex datasets like heart disease prediction.</p>
+    </div>
+    <div class="sub-container">Neural Networks
+    <p>Neural Networks mimic the human brain's structure and learn patterns through multiple layers of interconnected nodes (neurons). They excel in capturing
+    non-linear relationships and can be customized for heart disease prediction tasks. However, they require careful design and tuning, and may not always be the
+        best choice for small datasets.</p>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p><strong>Email:</strong> info@heartprediction.com</p>
+        <p><strong>Location:</strong> Mumbai, India</p>
+        <p><strong>Phone:</strong> +91 123 456 7890</p>
+    </div>
+</footer>
+
+</body>
+>>>>>>> 4f2b27e41e6a2f8ad1c64224f8c0dd219a9d86b2
 </html>
