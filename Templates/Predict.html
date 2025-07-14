@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Predictor</title>
+  <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container-heading {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .heading_font {
+      font-family: 'Pacifico', cursive;
+      color: #e63946;
+    }
+
+    .description {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1rem;
+      color: #444;
+    }
+
+    /* Form Styles */
+    .ml-container {
+      background: #fff;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      border-color: #457b9d;
+      outline: none;
+    }
+
+    .my-cta-button {
+      background: #1d3557;
+      color: white;
+      text-align: center;
+      padding: 12px 25px;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .my-cta-button:hover {
+      background: #457b9d;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      background: #1d3557;
+      color: white;
+    }
+
+    .contact {
+      margin-bottom: 10px;
+    }
+
+    .contact-icon {
+      margin: 0 10px;
+      color: white;
+      transition: color 0.3s ease;
+    }
+
+    .contact-icon:hover {
+      color: #a8dadc;
+    }
+
+    .footer-description {
+      font-size: 0.9rem;
+    }
+
+    .prediction-result {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #e63946;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Website Title -->
+  <div class="container">
+    <h2 class="container-heading"><span class="heading_font">Heart Disease Predictor</span></h2>
+    <div class="description">
+      <p>A Machine Learning Web Application that predicts the chance of having heart disease or not, built with Flask
+        and deployed using Heroku.</p>
+      <p>(Note: This model is 82.67% accurate)</p>
+    </div>
+  </div>
+
+  <!-- Input Form -->
+  <div class="ml-container">
+    <form action="{{ url_for('predict') }}" method="POST">
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" placeholder="Your age.." required>
+      </div>
+
+      <div class="form-group">
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex" required>
+          <option selected disabled>----select option----</option>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="cp">Chest Pain Type</label>
+        <select id="cp" name="cp" required>
+          <option selected disabled>----select option----</option>
+          <option value="0">Typical Angina</option>
+          <option value="1">Atypical Angina</option>
+          <option value="2">Non-anginal Pain</option>
+          <option value="3">Asymptomatic</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="trestbps">Resting Blood Pressure</label>
+        <input type="number" id="trestbps" name="trestbps" placeholder="94-200 mmHg" required>
+      </div>
+
+      <div class="form-group">
+        <label for="chol">Serum Cholesterol</label>
+        <input type="number" id="chol" name="chol" placeholder="126-564 mg/dl" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fbs">Fasting Blood Sugar</label>
+        <select id="fbs" name="fbs" required>
+          <option selected disabled>----select option----</option>
+          <option value="1">Greater than 120 mg/dl</option>
+          <option value="0">Less than 120 mg/dl</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="restecg">Resting ECG Results</label>
+        <select id="restecg" name="restecg" required>
+          <option selected disabled>----select option----</option>
+          <option value="0">Normal</option>
+          <option value="1">ST-T wave abnormality</option>
+          <option value="2">Left ventricular hypertrophy</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="thalach">Max Heart Rate</label>
+        <input type="number" id="thalach" name="thalach" placeholder="71-202 bpm" required>
+      </div>
+
+      <div class="form-group">
+        <label for="exang">Exercise-induced Angina</label>
+        <select id="exang" name="exang" required>
+          <option selected disabled>----select option----</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="oldpeak">ST Depression</label>
+        <input type="number" step="0.1" id="oldpeak" name="oldpeak" placeholder="0-6.2" required>
+      </div>
+
+      <div class="form-group">
+        <label for="slope">Slope of Peak Exercise ST Segment</label>
+        <select id="slope" name="slope" required>
+          <option selected disabled>----select option----</option>
+          <option value="0">Upsloping</option>
+          <option value="1">Flat</option>
+          <option value="2">Downsloping</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="ca">Number of Major Vessels</label>
+        <input type="number" id="ca" name="ca" placeholder="0-4" required>
+      </div>
+
+      <div class="form-group">
+        <label for="thal">Thalassemia</label>
+        <select id="thal" name="thal" required>
+          <option selected disabled>----select option----</option>
+          <option value="1">Normal</option>
+          <option value="2">Fixed Defect</option>
+          <option value="3">Reversible Defect</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" class="my-cta-button" value="Predict">
+      </div>
+
+      {% if prediction_text %}
+      <div class="form-group">
+        <p class="prediction-result">{{ prediction_text }}</p>
+      </div>
+      {% endif %}
+
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p><strong>Email:</strong> info@heartprediction.com</p>
+      <p><strong>Location:</strong> Mumbai, India</p>
+      <p><strong>Phone:</strong> +91 123 456 7890</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
